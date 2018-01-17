@@ -25,11 +25,12 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        return super.onOptionsItemSelected(item);
+
         if(item.getItemId()== R.id.menu_add)
         {
-            Intent it = new Intent(MainActivity.this,AddActivity.class);
+            Intent it = new Intent(MainActivity.this, AddActivity.class);
             startActivity(it);
         }
+        return super.onOptionsItemSelected(item);
     }
 }
