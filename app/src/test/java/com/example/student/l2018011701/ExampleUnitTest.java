@@ -24,7 +24,9 @@ public class ExampleUnitTest {
     @Test
     public void test2()
     {
-        assertEquals(8,4+2);
+        Mytest mytest =new Mytest();
+
+        assertEquals(8,mytest.getint(3,5));
     }
 
 
