@@ -24,5 +24,6 @@ public class AddActivity extends AppCompatActivity {
         String name = etname.getText().toString();
         int score=Integer.valueOf(etscore.getText().toString());
         MainActivity.dao.add(new Student(id,name,score));
+        finish();
     }
 }
