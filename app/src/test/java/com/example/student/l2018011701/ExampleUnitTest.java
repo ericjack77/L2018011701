@@ -81,7 +81,7 @@ public class ExampleUnitTest {
         dao.add(new Student(1,"Jizz",88));
         dao.add(new Student(2,"Howk",55));
         dao.add(new Student(3,"Wizard",77));
-        assertEquals(2,dao.getList().size());
+        assertEquals(3,dao.getList().size());
     }
 
 }
