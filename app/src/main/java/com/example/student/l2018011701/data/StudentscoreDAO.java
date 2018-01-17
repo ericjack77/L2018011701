@@ -12,6 +12,7 @@ public class StudentscoreDAO {
     {
         studentlist = new ArrayList<>();
     }
+
     public boolean add(Student s)
     {
         studentlist.add(s);

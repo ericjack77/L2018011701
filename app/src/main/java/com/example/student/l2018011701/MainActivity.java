@@ -3,6 +3,7 @@ package com.example.student.l2018011701;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -17,10 +18,24 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
     final public static StudentscoreDAO dao =new StudentscoreDAO();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+//        dao.add(new Student(1,"預設",99));
+//        dao.add(new Student(2,"花花",88));
+//        dao.add(new Student(3,"光光",77));
+//        Log.d("onCreate","3213");
+
+
+    }
+
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+
     }
 
     @Override
@@ -46,6 +61,8 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(it);
             }
         });
+
+
 
 
 

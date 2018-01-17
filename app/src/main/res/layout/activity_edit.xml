@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.student.l2018011701.DetailActivity">
+    tools:context="com.example.student.l2018011701.EditActivity">
 
     <LinearLayout
         android:layout_width="0dp"
@@ -19,47 +19,35 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <TextView
-            android:id="@+id/textView1"
+        <EditText
+            android:id="@+id/editText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="TextView"
-            android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
+            android:ems="10"
+            android:hint="Name"
+            android:inputType="textPersonName" />
 
-        <TextView
-            android:id="@+id/textView2"
+        <EditText
+            android:id="@+id/editText6"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="TextView"
-            android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
-
-        <TextView
-            android:id="@+id/textView3"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="TextView"
-            android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
+            android:ems="10"
+            android:hint="Score"
+            android:inputType="number" />
 
         <Button
             android:id="@+id/button2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:onClick="clickEdit"
-            android:text="Edit" />
+            android:onClick="clickSubmit"
+            android:text="Submit" />
 
         <Button
             android:id="@+id/button3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:onClick="clickDelete"
-            android:text="Delete" />
-
-        <Button
-            android:id="@+id/button4"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:onClick="clickBack"
-            android:text="Back" />
+            android:onClick="clickCancle"
+            android:text="Cancel" />
 
     </LinearLayout>
 </android.support.constraint.ConstraintLayout>
