@@ -16,29 +16,24 @@ public class EditActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit);
-        id =getIntent().getIntExtra("id2",0);
+        id =getIntent().getIntExtra("id",0);
         etName=findViewById(R.id.editText);
         etScore=findViewById(R.id.editText6);
         s=MainActivity.dao.getStudent(id);
 
-//        etName.setText(s.name);
-//        etScore.setText(s.score);
 
     }
 
     public void clickSubmit(View v)
     {
-        Intent it = new Intent(EditActivity.this,MainActivity.class);
         String newName = etName.getText().toString();
         int newScore = Integer.parseInt(etScore.getText().toString());
         MainActivity.dao.update(new Student(id,newName,newScore));
-
-        startActivity(it);
+        finish();
     }
 
     public void clickCancle(View v)
     {
-        Intent it =new Intent(EditActivity.this,MainActivity.class);
-        startActivity(it);
+        finish();
     }
 }

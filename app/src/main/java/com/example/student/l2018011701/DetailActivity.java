@@ -1,6 +1,8 @@
 package com.example.student.l2018011701;
 
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -17,34 +19,54 @@ public class DetailActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);
+
         id=getIntent().getIntExtra("id",0);
         tv=findViewById(R.id.textView1);
         tv2=findViewById(R.id.textView2);
         tv3=findViewById(R.id.textView3);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
         s=MainActivity.dao.getStudent(id);
         tv.setText("ID:"+String.valueOf(s.id));
         tv2.setText("名字:"+s.name);
         tv3.setText("分數:"+String.valueOf(s.score));
-
     }
 
     public void clickDelete(View v)
     {
-        MainActivity.dao.delete(id);
-        Intent it = new Intent(DetailActivity.this,MainActivity.class);
-        startActivity(it);
+        AlertDialog.Builder builder = new AlertDialog.Builder(DetailActivity.this);
+        builder.setTitle("刪除資料");
+        builder.setMessage("確認刪除?");
+        builder.setPositiveButton("確認", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                MainActivity.dao.delete(id);
+                finish();
+            }
+        });
+        builder.setNegativeButton("取消", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+
+            }
+        });
+
+        builder.show();
+
     }
 
     public  void clickEdit(View v)
     {
         Intent it = new Intent(DetailActivity.this,EditActivity.class);
-        it.putExtra("id2",id);
+        it.putExtra("id",id);
         startActivity(it);
     }
 
     public  void clickBack(View v)
     {
-        Intent it = new Intent(DetailActivity.this,MainActivity.class);
-        startActivity(it);
+        finish();
     }
 }
