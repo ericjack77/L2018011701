@@ -6,7 +6,7 @@ import java.util.ArrayList;
  * Created by Student on 2018/1/17.
  */
 
-public class StudentscoreDAO {
+public class StudentscoreDAO implements StudentDAO{
     public ArrayList<Student> studentlist;
     public StudentscoreDAO()
     {

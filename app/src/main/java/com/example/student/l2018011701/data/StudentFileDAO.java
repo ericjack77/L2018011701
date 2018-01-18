@@ -14,7 +14,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 
-public class StudentFileDAO {
+public class StudentFileDAO implements StudentDAO {
     Context context;
     public ArrayList<Student> studentlist;
     public StudentFileDAO(Context context)

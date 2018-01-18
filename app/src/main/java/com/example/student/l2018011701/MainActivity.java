@@ -11,20 +11,25 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import com.example.student.l2018011701.data.DBtype;
 import com.example.student.l2018011701.data.Student;
+import com.example.student.l2018011701.data.StudentDAO;
+import com.example.student.l2018011701.data.StudentDAOFactory;
 import com.example.student.l2018011701.data.StudentFileDAO;
 import com.example.student.l2018011701.data.StudentscoreDAO;
 
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
-    public static StudentFileDAO dao;
+    public static StudentDAO dao;
+    DBtype type;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        dao =new StudentFileDAO(this);
+        type=DBtype.File;
+        dao = StudentDAOFactory.getDAOInstance(this,type);
     }
 
 
