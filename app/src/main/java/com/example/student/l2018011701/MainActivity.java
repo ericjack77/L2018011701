@@ -30,6 +30,9 @@ import java.util.ArrayList;
 public class MainActivity extends AppCompatActivity {
     public static StudentDAO dao;
     DBtype type;
+    ListView lv;
+    ArrayList<String> studentname;
+    ArrayAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +40,24 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         type=DBtype.CLOUD;
         dao = StudentDAOFactory.getDAOInstance(this,type);
+
+        lv =findViewById(R.id.listview);
+        studentname = new ArrayList<>();
+
+
+        adapter = new ArrayAdapter(MainActivity.this,
+                android.R.layout.simple_list_item_1,
+                studentname
+        );
+        lv.setAdapter(adapter);
+        lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
+                Intent it =new Intent(MainActivity.this,DetailActivity.class);
+                it.putExtra("id",dao.getList().get(position).id);
+                startActivity(it);
+            }
+        });
 
     }
 
@@ -50,32 +71,17 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        ListView lv =findViewById(R.id.listview);
-        ArrayList<String> studentname = new ArrayList<>();
+        refresh();
+    }
+
+    public void refresh()
+    {
+        studentname.clear();
         for(Student s:dao.getList())
         {
             studentname.add(s.name);
         }
-
-        ArrayAdapter adapter = new ArrayAdapter(MainActivity.this,
-                android.R.layout.simple_list_item_1,
-                studentname
-                );
-        lv.setAdapter(adapter);
-        lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
-                Intent it =new Intent(MainActivity.this,DetailActivity.class);
-                it.putExtra("id",dao.getList().get(position).id);
-                startActivity(it);
-            }
-        });
-
-
-
-
-
-
+        adapter.notifyDataSetChanged();
     }
 
     @Override
