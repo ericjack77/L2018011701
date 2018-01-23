@@ -29,8 +29,8 @@ public class StudentCloudDAOImpl implements StudentDAO {
     {
         this.context=context;
         studentlist = new ArrayList<>();
-        database = FirebaseDatabase.getInstance();
-        myRef = database.getReference("testforcloud");
+            database = FirebaseDatabase.getInstance();
+            myRef = database.getReference("testforcloud");
 
         // Read from the database
         //EventListener 隨時監聽線上更新
