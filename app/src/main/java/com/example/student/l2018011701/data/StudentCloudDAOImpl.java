@@ -43,6 +43,10 @@ public class StudentCloudDAOImpl implements StudentDAO {
                 String value = dataSnapshot.getValue(String.class);
                 Gson gson = new Gson();
                 studentlist = gson.fromJson(value,new TypeToken<ArrayList<Student>>(){}.getType());
+                if (studentlist == null)
+                {
+                    studentlist = new ArrayList<>();
+                }
                 ((MainActivity) context).refresh();
 
             }
@@ -52,11 +56,7 @@ public class StudentCloudDAOImpl implements StudentDAO {
                 // Failed to read value
             }
         });
-        if (studentlist == null)
-        {
-            studentlist = new ArrayList<>();
 
-        }
 
 
     }
