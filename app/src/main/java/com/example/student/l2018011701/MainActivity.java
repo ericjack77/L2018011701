@@ -17,6 +17,13 @@ import com.example.student.l2018011701.data.StudentDAO;
 import com.example.student.l2018011701.data.StudentDAOFactory;
 import com.example.student.l2018011701.data.StudentFileDAO;
 import com.example.student.l2018011701.data.StudentscoreDAO;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 
 import java.util.ArrayList;
 
@@ -28,8 +35,9 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        type=DBtype.DB;
+        type=DBtype.CLOUD;
         dao = StudentDAOFactory.getDAOInstance(this,type);
+
     }
 
 
